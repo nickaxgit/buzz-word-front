@@ -163,6 +163,9 @@ transform: scale(1.1);
   .bronze{
       background: linear-gradient(45deg, #b84e03 0%,  #e7b089 50%, #b84e03 100%);
   }
+
+  .red{background: linear-gradient(45deg, red 0%,  #e7b089 50%, red 100%);}
+
   .single{
       background: linear-gradient(45deg, rgb(39, 153, 190) 0%, rgb(187, 230, 245) 50%, rgb(39, 153, 190) 100%);
   }
