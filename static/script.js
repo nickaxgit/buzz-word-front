@@ -56,6 +56,8 @@ async function getState() {
 
         state.gameRooms.forEach(r => {
 
+            console.log (r)
+            
             if(firstTime){
                 let roomButton = document.createElement('button')
 
@@ -79,7 +81,10 @@ async function getState() {
         }        
         )    
 
+
         firstTime=false
+
+        //setTimeout(()=>{firstTime=false},500)
        
         if (myRoom){
             let currentRound=myRoom.rounds[myRoom.currentRoundIndex] 
