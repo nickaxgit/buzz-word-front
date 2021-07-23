@@ -18,6 +18,7 @@ let countdown = -1
 let handle = 0
 
 let timeLeft = 0
+let firstTime = true
 
 let state = null  //game state object - updated in getState()
 let roundIndex= -1 //we track the current round to be sure the next round has started
@@ -47,7 +48,7 @@ async function getState() {
     if (state){
 
         let roomList = document.getElementById("roomList")
-        roomList.innerHTML = ""
+        //roomList.innerHTML = ""
         infoPanel.innerHTML=''
 
         //Show the room/game buttons
@@ -55,18 +56,30 @@ async function getState() {
 
         state.gameRooms.forEach(r => {
 
-            let roomButton = document.createElement('button')
-            roomButton.setAttribute("type","button")
-            roomButton.classList.add('btnRooms')
-            roomButton.classList.add(r.roomName.toLowerCase())
-            roomList.appendChild(roomButton)
+            if(firstTime){
+                let roomButton = document.createElement('button')
+
+                roomButton.setAttribute("type","button")
+                roomButton.setAttribute("id","room_" + r.roomId)
+                
+                roomButton.classList.add('btnRooms')
+                roomButton.classList.add(r.roomName.toLowerCase())
+                roomList.appendChild(roomButton)
+                roomButton.addEventListener('click', () => { joinGame(r) })
+            }
+            else{
+                roomButton=document.getElementById("room_" + r.roomId)
+            }
+            
             let playersList = []
             r.players.map(x => playersList.push(x.name))
             roomButton.innerHTML = `${r.roomName} ${r.players.length} of ${r.maxMembers} - ${playersList.join(',')}`
-            roomButton.addEventListener('click', () => { joinGame(r) })
+            
             if (inRoom==r.roomId ) {myRoom=r} //locate and keep a refeence to 'my' room - attempting to debug anything inside the forEach gets *extremely* confusiong
         }        
         )    
+
+        firstTime=false
        
         if (myRoom){
             let currentRound=myRoom.rounds[myRoom.currentRoundIndex] 
