@@ -56,10 +56,11 @@ async function getState() {
 
         state.gameRooms.forEach(r => {
 
-            console.log (r)
-            
+                        
+            let roomButton
+
             if(firstTime){
-                let roomButton = document.createElement('button')
+                roomButton = document.createElement('button')
 
                 roomButton.setAttribute("type","button")
                 roomButton.setAttribute("id","room_" + r.roomId)
