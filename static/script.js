@@ -2,6 +2,8 @@
 
 let cellCount = 52 //100 - we need a formula for this from the edge length really
 
+let server="https://nick-buzzwords.herokuapp.com"
+
 let allCells = [] //'c0', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10', 'c11', 'c12', 'c13', 'c14', 'c15', 'c16', 'c17', 'c18', 'c19'];
 for (let i = 0; i < cellCount; i++) {
     allCells.push('c' + i)
@@ -40,7 +42,7 @@ let inRoom = -1
 async function getState() {
 
     
-    state = await submit('GET', `https://nick-buzzwords.herokuapp.com/api/state`)
+    state = await submit('GET', `${server}/api/state`)
 
     if (state){
 
@@ -169,7 +171,7 @@ function joinGame(room) {
     }
 
     console.log(roomInfo)
-    submit('POST', `https://nick-buzzwords.herokuapp.com/api/room`, roomInfo)
+    submit('POST', `${server}/api/room`, roomInfo)
 
     inRoom = room.roomId
 
@@ -183,7 +185,7 @@ async function signUp() {
     let user = document.getElementById('userName')
     let password = document.getElementById('password')
     let userinfo = { username: user.value, password: password.value }
-    let result = await submit('POST', `https://nick-buzzwords.herokuapp.com/signup/`, userinfo)
+    let result = await submit('POST', `${server}/signup/`, userinfo)
     console.log(result)
 }
 
@@ -191,7 +193,7 @@ async function signIn() {
     let user = document.getElementById('si_userName')
     let password = document.getElementById('si_password')
     let userinfo = { username: user.value, password: password.value }
-    let result = await submit('POST', `https://nick-buzzwords.herokuapp.com/login/`, userinfo)
+    let result = await submit('POST', `${server}/login/`, userinfo)
     console.log(result)
 }
 
@@ -240,7 +242,7 @@ function clearCells() {
 }
 
 async function submitWord() {
-    let response = await submit('POST', 'https://nick-buzzwords.herokuapp.com/api/dict', { "letters": letters })
+    let response = await submit('POST', '${server}/api/dict', { "letters": letters })
     console.log(response)
     const history = document.getElementById("historyHolder")
     let historyEntry = document.createElement("p")
@@ -283,17 +285,6 @@ async function submitWord() {
 }
 
 async function submit(method, url, requestBodyObj) {
-
-    // const response = await fetch("https://nick-buzzwords.herokuapp.com/login", {
-    //     method: "POST",
-    //     credentials: "same-origin",
-    //     body: JSON.stringify({ username: body[0], password: body[1] }),
-    //     headers: {
-    //       "Access-Control-Allow-Origin": "*",
-    //       "Access-Control-Allow-Headers": "*",
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
 
 
     let payload = null
