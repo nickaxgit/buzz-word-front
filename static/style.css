@@ -18,7 +18,9 @@
  .cellDiv{
     width:50px;
     height:40px;    
-    fill:palegreen;
+    fill: orange;   
+    filter: drop-shadow(0 6mm 4mm rgb(160, 160, 100));      
+  
 }
 
 .cellLetter{
@@ -33,13 +35,21 @@
 }
 
 #historyHolder {
-  color: blue;
-  background-color: grey;
+  border:1px solid white;
+  background-color: rgba(0,0,0,.5)grey;
   width: 25%;
 }
 
 .wordHistory {
   color: white;
+}
+
+.word {
+  text-align: center;
+  background-color: yellow;
+  font-size: 1.5em;
+  margin: 20px;
+  border: 2px solid orange;
 }
 
 /* The animation code */
