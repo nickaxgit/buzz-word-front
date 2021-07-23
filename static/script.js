@@ -245,9 +245,9 @@ async function submitWord() {
     let response = await submit('POST', `${server}/api/dict`, { "letters": letters })
     console.log(response)
     const history = document.getElementById("historyHolder")
-    let historyEntry = document.createElement("p")
+    let historyEntry = document.createElement("div")
     historyEntry.classList.add("wordHistory")
-    historyEntry.innerHTML = `${word} ${response.score}`
+    historyEntry.innerHTML = `${word} - ${response.score}`
     history.appendChild(historyEntry)
 
     document.getElementById('submitReset').hidden=true //style.display="none"

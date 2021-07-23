@@ -35,9 +35,15 @@
 }
 
 #historyHolder {
-  border:1px solid white;
-  background-color: rgba(0,0,0,.5)grey;
-  width: 25%;
+  
+    border: 1px solid white;
+    background-color: rgba(0,0,0,.5);
+    width: 20%;
+    position: absolute;
+    right: 20px;
+    top: 180px;
+    padding: 10px;
+
 }
 
 .wordHistory {
