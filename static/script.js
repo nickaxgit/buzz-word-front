@@ -61,7 +61,7 @@ async function getState() {
             roomList.appendChild(roomButton)
             let playersList = []
             r.players.map(x => playersList.push(x.name))
-            roomButton.innerHTML = `${r.roomName} ${r.players.length} ${playersList.join(',')}`
+            roomButton.innerHTML = `${r.roomName} ${r.players.length} of ${r.maxMembers} - ${playersList.join(',')}`
             roomButton.addEventListener('click', () => { joinGame(r) })
             if (inRoom==r.roomId ) {myRoom=r} //locate and keep a refeence to 'my' room - attempting to debug anything inside the forEach gets *extremely* confusiong
         }        
