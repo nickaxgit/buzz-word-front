@@ -242,7 +242,7 @@ function clearCells() {
 }
 
 async function submitWord() {
-    let response = await submit('POST', '${server}/api/dict', { "letters": letters })
+    let response = await submit('POST', `${server}/api/dict`, { "letters": letters })
     console.log(response)
     const history = document.getElementById("historyHolder")
     let historyEntry = document.createElement("p")
