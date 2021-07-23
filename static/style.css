@@ -44,7 +44,7 @@
   color: white;
 }
 
-.word {
+#word {
   text-align: center;
   background-color: yellow;
   font-size: 1.5em;
@@ -61,7 +61,7 @@
 
   to {
       /*background-color: aqua;*/
-      fill:aqua
+      fill:orange
   }
 }
 
@@ -78,7 +78,7 @@
   }
 
   to {
-      fill: aqua;
+      fill: orange;
   }
 }
 
